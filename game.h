@@ -7,10 +7,12 @@
 #include <QGraphicsTextItem>
 
 
+
 #include "health.h"
 #include "score.h"
 #include "invader.h"
 #include "defender.h"
+#include "button.h"
 
 class Game : public QGraphicsView
 {
@@ -18,7 +20,7 @@ class Game : public QGraphicsView
 
 public:
     Game(QWidget *parent = nullptr);
-    ~Game();
+    ~Game(){};
 
     QGraphicsScene* scene;
 
@@ -26,6 +28,8 @@ public:
     Score* score;
     Invader* invader;
     Defender* defender;
-
+public slots:
+    void MainMenu();
+    void playGame();
 };
 #endif // GAME_H

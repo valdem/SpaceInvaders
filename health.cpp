@@ -5,5 +5,5 @@ Health::Health(QGraphicsItem* parent)
     health = 3;
 
     setDefaultTextColor(Qt::white);
-    setPlainText(QString("Health: ")+QString::number(health));
+    setPlainText(QString("Health: ") + QString::number(health));
 }
