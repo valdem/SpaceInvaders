@@ -1,5 +1,7 @@
 #include "game.h"
-#include <iostream>
+#include <QPushButton>
+#include <QDebug>
+#include <QKeyEvent>
 
 Game::Game(QWidget* parent)
 {
@@ -7,23 +9,24 @@ Game::Game(QWidget* parent)
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setFixedSize(1024,768);
+    setFixedSize(1024,650);
 
     scene = new QGraphicsScene();
-    scene->setSceneRect(0, 0, 1024, 768);
+    scene->setSceneRect(0, 0, 1024, 650);
     setScene(scene);
 }
 
 void Game::MainMenu() {
-    Button* play = new Button(QString("Play"));
-    play->setPos(this->width()/2 - play->boundingRect().width()/2, 275);
-    connect(play, SIGNAL(clicked()), this, SLOT(playGame()));
-    scene->addItem(play);
+    QPushButton* playButton = new QPushButton();
+    playButton->setText("Play");
+    playButton->setGeometry(512,325,200,50);
+
+    connect(playButton, SIGNAL(clicked()), this, SLOT(playGame()));
+    QGraphicsProxyWidget *proxy = this->scene->addWidget(playButton);
 }
 
 void Game::playGame() {
     scene->clear();
-
 
     defender = new Defender();
 

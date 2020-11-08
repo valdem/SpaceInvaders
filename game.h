@@ -12,7 +12,6 @@
 #include "score.h"
 #include "invader.h"
 #include "defender.h"
-#include "button.h"
 
 class Game : public QGraphicsView
 {
@@ -24,12 +23,13 @@ public:
 
     QGraphicsScene* scene;
 
+    void MainMenu();
+
     Health* health;
     Score* score;
     Invader* invader;
     Defender* defender;
 public slots:
-    void MainMenu();
     void playGame();
 };
 #endif // GAME_H

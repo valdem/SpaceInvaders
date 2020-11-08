@@ -6,13 +6,14 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 
+#include <QDebug>
+
 
 class Defender: public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 public:
-    Defender() {};
-    void keyEvent(QKeyEvent* keyEvent);
+    void keyPressEvent(QKeyEvent * event);
 };
 
 #endif // DEFENDER_H

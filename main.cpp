@@ -2,10 +2,15 @@
 
 #include <QApplication>
 
+Game* game;
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Game w;
-    w.show();
+
+    game = new Game();
+    game->show();
+    game->playGame();
+
     return a.exec();
 }
