@@ -11,8 +11,11 @@ Game::Game(QWidget* parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1024,650);
 
+    _width = 1024;
+    _height = 650;
+
     scene = new QGraphicsScene();
-    scene->setSceneRect(0, 0, 1024, 650);
+    scene->setSceneRect(0, 0, _width, _height);
     setScene(scene);
 }
 
@@ -23,6 +26,12 @@ void Game::MainMenu() {
 
     connect(playButton, SIGNAL(clicked()), this, SLOT(playGame()));
     QGraphicsProxyWidget *proxy = this->scene->addWidget(playButton);
+}
+
+void Game::GameOver() {
+    QGraphicsTextItem* textGameOver = new QGraphicsTextItem(QString("GAmeOver"));
+    textGameOver->setPos(150,150);
+    scene->addItem(textGameOver);
 }
 
 void Game::playGame() {
@@ -43,4 +52,9 @@ void Game::playGame() {
     score = new Score();
     score->setPos(score->x(),score->y()+20);
     scene->addItem(score);
+
+    QTimer* timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),defender,SLOT(spawn()));
+    int time = 3000;
+    timer->start(time);
 }

@@ -6,3 +6,8 @@ Score::Score(QGraphicsItem* parent)
     setPlainText(QString("Score: ") + QString::number(_score));
     setDefaultTextColor(Qt::white);
 }
+
+void Score::increase() {
+    _score++;
+    setPlainText(QString("Score: ")+QString::number(_score));
+}

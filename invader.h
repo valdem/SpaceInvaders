@@ -1,11 +1,19 @@
 #ifndef INVADER_H
 #define INVADER_H
 
+#include <QObject>
+#include <QGraphicsItem>
 
-class Invader
+class Invader: public QObject, public QGraphicsRectItem
 {
+    Q_OBJECT
 public:
     Invader();
+public slots:
+    void move();
+private:
+    int _weight;
+    int _height;
 };
 
 #endif // INVADER_H
