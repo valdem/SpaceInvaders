@@ -2,6 +2,8 @@
 #include <QPushButton>
 #include <QDebug>
 #include <QKeyEvent>
+#include <QBrush>
+#include <QImage>
 
 Game::Game(QWidget* parent)
 {
@@ -11,6 +13,8 @@ Game::Game(QWidget* parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1024,650);
 
+    setBackgroundBrush(QBrush(QImage(":/space.png")));
+
     _width = 1024;
     _height = 650;
 
@@ -19,28 +23,12 @@ Game::Game(QWidget* parent)
     setScene(scene);
 }
 
-void Game::MainMenu() {
-    QPushButton* playButton = new QPushButton();
-    playButton->setText("Play");
-    playButton->setGeometry(512,325,200,50);
-
-    connect(playButton, SIGNAL(clicked()), this, SLOT(playGame()));
-    QGraphicsProxyWidget *proxy = this->scene->addWidget(playButton);
-}
-
-void Game::GameOver() {
-    QGraphicsTextItem* textGameOver = new QGraphicsTextItem(QString("GAmeOver"));
-    textGameOver->setPos(150,150);
-    scene->addItem(textGameOver);
-}
-
-void Game::playGame() {
+void Game::play() {
     scene->clear();
 
     defender = new Defender();
 
-    defender->setRect(0,0,100,100);
-    defender->setPos(scene->width()/2-defender->rect().width()/2,scene->height()-defender->rect().height());
+    defender->setPos(scene->width()/2-defender->pixmap().width()/2,scene->height()-defender->pixmap().height());
     defender->setFlag(QGraphicsItem::ItemIsFocusable);
     defender->setFocus();
 
@@ -57,4 +45,8 @@ void Game::playGame() {
     connect(timer,SIGNAL(timeout()),defender,SLOT(spawn()));
     int time = 3000;
     timer->start(time);
+}
+
+void Game::GameOver() {
+    close();
 }

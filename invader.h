@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QGraphicsItem>
 
-class Invader: public QObject, public QGraphicsRectItem
+class Invader: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:

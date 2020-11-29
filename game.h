@@ -22,7 +22,6 @@ public:
 
     QGraphicsScene* scene;
 
-    void MainMenu();
     void GameOver();
 
     Health* health;
@@ -33,6 +32,6 @@ public:
     int _width;
     int _height;
 public slots:
-    void playGame();
+    void play();
 };
 #endif // GAME_H

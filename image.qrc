@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>space.png</file>
+        <file>defender4.png</file>
+        <file>invader2.png</file>
+        <file>bullet.png</file>
+    </qresource>
+</RCC>

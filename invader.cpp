@@ -9,7 +9,8 @@ Invader::Invader()
     _position = rand()%(game->_width);
     setPos(_position, 0);
 
-    setRect(0,0,100,100);
+    QPixmap pixmap(":/invader2.png");
+    setPixmap(pixmap.scaled(QSize(100,100),Qt::KeepAspectRatio));
 
     QTimer* timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this, SLOT(move()));
@@ -21,7 +22,7 @@ Invader::Invader()
 
 void Invader:: move() {
     setPos(x(),y()+10);
-    if(pos().y()-rect().height()>(game->_height)) {
+    if(pos().y()-pixmap().height()>(game->_height)) {
         game->health->decrease();
         scene()->removeItem(this);
         delete this;

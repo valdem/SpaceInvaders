@@ -1,6 +1,9 @@
 #include "defender.h"
 
-
+Defender::Defender() {
+    QPixmap pixmap(":/defender4.png");
+    setPixmap(pixmap.scaled(QSize(100,100),Qt::KeepAspectRatio));
+}
 
 void Defender::keyPressEvent(QKeyEvent *event){
     switch (event->key()) {
@@ -14,7 +17,7 @@ void Defender::keyPressEvent(QKeyEvent *event){
     break;
     case (Qt::Key_Space):
         Bullet* bullet = new Bullet();
-        bullet->setPos(x()+rect().width()/2,y());
+        bullet->setPos(x()+pixmap().width()/2,y());
         scene()->addItem(bullet);
     }
 

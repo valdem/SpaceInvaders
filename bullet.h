@@ -9,7 +9,7 @@
 #include "invader.h"
 
 
-class Bullet: public QObject, public QGraphicsRectItem
+class Bullet: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:

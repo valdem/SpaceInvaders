@@ -2,19 +2,21 @@
 #define DEFENDER_H
 
 #include <QObject>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <QDebug>
+#include <QPixmap>
 
 #include "bullet.h"
 #include "invader.h"
 
 
-class Defender: public QObject, public QGraphicsRectItem
+class Defender: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
+    Defender();
     void keyPressEvent(QKeyEvent * event);
 public slots:
     void spawn();

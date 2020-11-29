@@ -5,7 +5,8 @@ extern Game* game;
 
 Bullet::Bullet()
 {
-    setRect(0,0,10,50);
+    QPixmap pixmap(":/bullet.png");
+    setPixmap(pixmap.scaled(QSize(20,20),Qt::KeepAspectRatio));
     QTimer* timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(onMove()));
     timer->start(50);
@@ -25,7 +26,7 @@ void Bullet:: onMove() {
         }
     }
     setPos(x(),y()-10);
-    if (pos().y()+rect().height()<0) {
+    if (pos().y()+pixmap().height()<0) {
         scene()->removeItem(this);
         delete this;
     }
