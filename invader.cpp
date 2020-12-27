@@ -6,7 +6,7 @@ extern Game* game;
 Invader::Invader()
 {
     int _position;
-    _position = rand()%(game->_width);
+    _position = rand()%(game->_width-100);
     setPos(_position, 0);
 
     QPixmap pixmap(":/invader2.png");

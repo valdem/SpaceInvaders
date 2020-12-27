@@ -1,5 +1,4 @@
 #include "game.h"
-#include <QPushButton>
 #include <QDebug>
 #include <QKeyEvent>
 #include <QBrush>

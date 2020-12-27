@@ -14,6 +14,7 @@ Bullet::Bullet()
 
 void Bullet:: onMove() {
     QList<QGraphicsItem*> CollidingItems = collidingItems();
+
     for(int i = 0, n = CollidingItems.size(); i<n; i++ ) {
         bool isInvader = typeid(*(CollidingItems[i])) == typeid (Invader);
         if (isInvader) {
@@ -25,7 +26,9 @@ void Bullet:: onMove() {
             return;
         }
     }
+
     setPos(x(),y()-10);
+
     if (pos().y()+pixmap().height()<0) {
         scene()->removeItem(this);
         delete this;
